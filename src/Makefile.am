@@ -27,6 +27,9 @@ libvmod_statsd_la_SOURCES = \
 	vcc_if.h \
 	vmod_statsd.c
 
+# Needed to stop concurrent builds from failing
+vmod_statsd.lo: vcc_if.h
+
 vcc_if.c vcc_if.h: $(SRC)/lib/libvmod_std/vmod.py $(top_srcdir)/$(DIR_PREFIX)src/vmod_statsd.vcc
 	@PYTHON@ $(SRC)/lib/libvmod_std/vmod.py $(top_srcdir)/$(DIR_PREFIX)src/vmod_statsd.vcc
 
